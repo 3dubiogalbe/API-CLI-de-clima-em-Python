@@ -18,7 +18,7 @@ print("------------------------------")
 print("Lista de cidades disponíveis:")
 
 for indice, cidade in enumerate(lista_cidades):
-    print(f"{indice+1} - {cidade}")
+    print(f"0{indice+1} - {cidade}")
 
 cidade = ""
 
@@ -39,7 +39,6 @@ while cidade not in lista_cidades:
 chave_api = os.getenv("CHAVE_API")
 url = f"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={chave_api}&units=metric&lang=pt_br"
 
-
 resultado = requests.get(url) # Aqui recebemos o retorno da API totalmente, e dentro de "resultado" tem o conteúdo JSON que precisamos
 
 if resultado.status_code == 200:
@@ -48,10 +47,9 @@ if resultado.status_code == 200:
     dicionario = resultado.json() # Para tratarmos esses valores e transformarmos ele em um dicionario Python, utilizamos o método .json
     temperatura = dicionario["main"]["temp"]
     clima = dicionario["weather"][0]["description"]
-    
+
+    print(f"Temperatura em {cidade}: {temperatura} graus, e o clima atual: {clima}")
+    print("Obrigado por utilizar o sistema de climas! até breve!")
+
 else:
-    print(f"Erro! sem retorno do sistema, código status: {resultado.status_code}")
-
-
-print(f"Temperatura em {cidade}: {temperatura} graus, e o clima atual: {clima}")
-print("Obrigado por utilizar o sistema de climas! até breve!")
+    print(f"Erro! >> código status: {resultado.status_code}")
