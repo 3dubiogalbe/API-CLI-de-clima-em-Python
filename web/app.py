@@ -41,7 +41,8 @@ def resultado_final():
 
         else:
             return render_template("resultado.html",
-                                retorno_erro = resultado.status_code)
+                                retorno_erro = resultado.status_code
+                                )
     else:
         return render_template("resultado.html", 
                                 cidade=cidade
