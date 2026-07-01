@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API de clima</title>
 </head>
 <body>
-    <h1 style="font-family: Arial, Helvetica, sans-serif;">
-        Bem-vindo ao sistema de clima!
-    </h1>
-    <p>
-        Lista de cidades disponiveis:
-    </p>
-    <ol style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">São Paulo</li>
-        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Osasco</li>
-        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Barueri</li>
-        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Campinas</li>
-        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Sorocaba</li>
-    </ol>
+    <div class="container">
+            <h1 style="font-family: Arial, Helvetica, sans-serif;">
+                Bem-vindo ao sistema de clima!
+            </h1>
+    </div>
 
-    <form action="/resultado" method="get"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <label for="cidade" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Digite a cidade:</label><br>
-        <input type="text" id="cidade" name="cidade"><br>
-        <input type="submit" id="submitar" value="Consultar"><br>
-    </form>
 
-    <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        Por: Eduardo Bio - v1.0, ainda em desenvolvimento
-    </p>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">
+                    Lista de cidades disponiveis:
+                </p>
+                    <ol style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">São Paulo</li>
+                        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Osasco</li>
+                        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Barueri</li>
+                        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Campinas</li>
+                        <li style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Sorocaba</li>
+                    </ol>
+
+                <h5 class="card-title">Formulário de pesquisa de clima</h5>
+                    <p class="card-text">Procure o clima de sua cidade!</p>
+
+                        <form action="/resultado" method="get"  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                            <label for="cidade" class="form-label">Digite a cidade:</label><br>
+                            <input type="text" class="form-control" id="cidade" name="cidade"><br>
+                            <button type="submit" class="btn btn-primary">Consultar</button>
+                        </form>
+
+                        <div class="container">
+                            <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                Por: Eduardo Bio - v1.1, ainda em desenvolvimento
+                            </p>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 </html>
 
