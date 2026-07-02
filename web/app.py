@@ -6,9 +6,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Criação da lista de cidades para consulta.
-lista_cidades = ['São Paulo', 'Campinas', 'Osasco', 'Sorocaba', 'Barueri']
 
 app = Flask(__name__) # — cria a aplicação Flask em si. É tipo "ligar o servidor". O __name__ é uma variável especial do Python que diz pro Flask em qual arquivo ele está rodando.
+
+url_ibge = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
+resultado_ibge = requests.get(url_ibge)
+dicionario_ibge = resultado_ibge.json()
+
+cidades_brasil = []
+
+for cidades in dicionario_ibge: # O for percorre o dicionario_ibge, que tem os valores em JSON da API, após isso, usamos o .append, usado para adicionar um único elemento ao final de uma lista.
+    cidades_brasil.append(cidades["nome"].lower())
+
+
+
 
 @app.route("/") #  — isso é um decorator. Ele "etiqueta" a função logo abaixo dizendo: "quando alguém acessar o endereço /, execute essa função". É assim que o Flask sabe qual função chamar pra cada rota.
 def index():
@@ -18,11 +29,11 @@ def index():
 @app.route("/resultado")
 
 def resultado_final():
-    cidade = request.args.get("cidade")
+    cidade = request.args.get("cidade").lower()
 
-    if cidade in lista_cidades:
+    if cidade in cidades_brasil:
         
-        chave_api = os.getenv("CHAVE_API")
+        chave_api = os.getenv("CHAVE_API_CLIMA")
         url = f"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={chave_api}&units=metric&lang=pt_br"
 
         resultado = requests.get(url) # Aqui recebemos o retorno da API totalmente, e dentro de "resultado" tem o conteúdo JSON que precisamos
